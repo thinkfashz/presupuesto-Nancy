@@ -3,289 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Casas Fabrick - Propuesta de Inversión Definitiva</title>
+    <title>Presupuesto Climatización - @f.eduardoms</title>
+    <!-- Carga de Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Carga de Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #111827;
-            color: #F9FAFB;
         }
-        .main-container-desktop {
-            height: 100vh;
-            width: 100vw;
-            overflow: hidden;
-            display: flex;
-        }
-        .section-container-desktop {
-            display: flex;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.76, 0, 0.24, 1);
-        }
-        .section {
-            width: 100vw;
-            height: 100vh;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            overflow-y: auto;
-            position: relative;
-        }
-        .background-pattern {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0);
-            background-size: 20px 20px;
-            animation: pan 60s linear infinite;
-            z-index: -1;
-        }
-        @keyframes pan { from { background-position: 0 0; } to { background-position: 200px 200px; } }
-        
-        .content-wrapper { max-width: 1200px; width: 100%; }
-        
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .fade-in-up { opacity: 0; }
-        .section.in-view .fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
-        
-        .nav-dots {
-            position: fixed; right: 2rem; top: 50%; transform: translateY(-50%);
-            display: flex; flex-direction: column; gap: 1rem; z-index: 50;
-        }
-        .dot-container { position: relative; }
-        .dot {
-            width: 12px; height: 12px; border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
-            cursor: pointer; transition: all 0.3s;
-        }
-        .dot.active { background-color: #FFC107; transform: scale(1.3); }
-        .dot-tooltip {
-            position: absolute; right: 150%; top: 50%;
-            transform: translateY(-50%) translateX(10px);
-            background-color: #1F2937; color: white; padding: 4px 12px;
-            border-radius: 6px; font-size: 12px; font-weight: 500;
-            white-space: nowrap; opacity: 0; visibility: hidden; transition: all 0.3s;
-        }
-        .dot-container:hover .dot-tooltip { opacity: 1; visibility: visible; transform: translateY(-50%) translateX(0); }
-        
-        /* Estilos Móviles */
-        .main-container-mobile { display: none; }
-        @media (max-width: 768px) {
-            body { overflow-y: auto; overflow-x: hidden; }
-            .main-container-desktop { display: none; }
-            .main-container-mobile { display: block; }
-            .section {
-                height: auto;
-                min-height: 100vh;
-                padding: 4rem 1.5rem;
+
+        /*
+         * ANIMACIÓN DE FLUJO DE AIRE
+         * Esta animación simula las ondas de aire frío
+         */
+        @keyframes flow-air {
+            0% {
+                /* Empieza pequeño y visible, justo bajo la unidad */
+                transform: translateY(0) scaleX(0.8);
+                opacity: 0.7;
             }
-            .nav-dots { display: none; }
+            100% {
+                /* Termina más abajo, más ancho y desaparece */
+                transform: translateY(100px) scaleX(1.5);
+                opacity: 0;
+            }
+        }
+
+        .air-wave {
+            position: absolute;
+            left: 50%;
+            top: 20px; /* Posición inicial bajo el AC */
+            margin-left: -25px; /* Centrado */
+            width: 50px;
+            height: 10px;
+            background-color: #3b82f6; /* Azulito de frío */
+            border-radius: 50%;
+            opacity: 0;
+            animation: flow-air 3s ease-out infinite;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-gray-100 min-h-screen py-12 px-4 sm:px-6 lg:px-8">
 
-    <div id="desktop-view" class="main-container-desktop">
-        <div id="section-container-desktop" class="section-container-desktop">
-            <!-- Contenido Desktop se genera aquí -->
-        </div>
-    </div>
+    <!-- Contenedor Principal: Diseño sencillo y personal -->
+    <div class="max-w-2xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden p-8 md:p-12">
 
-    <div id="mobile-view" class="main-container-mobile">
-        <!-- Contenido Móvil se genera aquí -->
-    </div>
+        <!-- 1. Encabezado Personal (TEXTO ACTUALIZADO) -->
+        <header class="text-center md:text-left mb-8">
+            <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">¡Hola Nancy! ¿Cómo estás?</h1>
+            <p class="mt-4 text-lg text-gray-600">
+                Soy <a href="https://www.instagram.com/f.eduardoms" target="_blank" class="text-blue-600 hover:underline font-medium">@f.eduardoms</a>.
+                Tal como lo conversamos, aquí te armé el presupuesto con todo el detalle para la climatización de tu casa en **Villa Alegre**. La idea es que quede todo impecable y súper confortable.
+            </p>
+        </header>
 
-    <!-- Navegación Desktop -->
-    <div id="nav-dots" class="nav-dots"></div>
+        <hr class="my-8 border-gray-200">
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const isMobile = window.innerWidth < 768;
-
-            const slidesData = [
-                // SLIDE 1: PORTADA
-                {
-                    title: "Portada",
-                    content: `<div class="text-center">
-                        <h1 class="text-5xl md:text-8xl font-black uppercase tracking-tighter">CASAS <span class="text-yellow-400">FABRICK</span></h1>
-                        <p class="mt-4 text-2xl md:text-3xl text-gray-300">Construimos Casas, Creamos Historias.</p>
-                        <p class="mt-12 text-lg font-semibold">Propuesta de Inversión Definitiva</p>
-                    </div>`
-                },
-                // SLIDE 2: EL PROBLEMA
-                {
-                    title: "El Problema",
-                    content: `<div class="text-center mb-12">
-                        <h2 class="text-4xl md:text-5xl font-black">El Problema: La Crisis de Confianza del Mercado</h2>
-                        <p class="text-lg text-gray-400 mt-2">La construcción en Chile enfrenta una frustración generalizada del cliente.</p>
-                    </div>
-                    <div class="grid md:grid-cols-3 gap-8">
-                        <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-700 shadow-lg backdrop-blur-sm">
-                            <p class="text-5xl font-bold text-red-500">48%</p>
-                            <h3 class="text-xl font-bold mt-4">Quejas por Calidad</h3>
-                            <p class="mt-2 text-gray-400 text-sm">Casi la mitad de reclamos al SERNAC son por terminaciones deficientes y defectos estructurales.</p>
-                        </div>
-                        <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-700 shadow-lg backdrop-blur-sm">
-                            <p class="text-5xl font-bold text-red-500">25%</p>
-                            <h3 class="text-xl font-bold mt-4">Incumplimiento de Plazos</h3>
-                            <p class="mt-2 text-gray-400 text-sm">Una de cada cuatro obras sufre retrasos significativos, generando sobrecostos y frustración.</p>
-                        </div>
-                        <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-700 shadow-lg backdrop-blur-sm">
-                            <p class="text-5xl font-bold text-red-500">Incalculable</p>
-                            <h3 class="text-xl font-bold mt-4">Abandono Post-Venta</h3>
-                            <p class="mt-2 text-gray-400 text-sm">Empresas que desaparecen tras la entrega, dejando a los clientes sin respaldo ni garantías.</p>
-                        </div>
-                    </div>`
-                },
-                // SLIDE 3: NUESTRA SOLUCIÓN
-                {
-                    title: "Nuestra Solución",
-                    content: `<div class="grid md:grid-cols-2 gap-16 items-center">
-                        <div>
-                            <h2 class="text-4xl md:text-5xl font-black">Nuestra Solución: <span class="text-yellow-400">El Compromiso Fabrick</span></h2>
-                            <p class="mt-4 text-lg text-gray-400">No somos otra constructora. Somos la solución experta a los problemas del mercado.</p>
-                            <div class="mt-8 space-y-6">
-                                <div class="flex items-start"><span class="bg-yellow-400 text-black font-bold rounded-full h-8 w-8 flex items-center justify-center mr-4 mt-1">1</span><div><h3 class="font-bold text-xl">Maestría Garantizada</h3><p class="text-gray-400">Liderados por un fundador que domina cada especialidad.</p></div></div>
-                                <div class="flex items-start"><span class="bg-yellow-400 text-black font-bold rounded-full h-8 w-8 flex items-center justify-center mr-4 mt-1">2</span><div><h3 class="font-bold text-xl">Calidad Obsesiva</h3><p class="text-gray-400">Aplicamos un checklist de más de 200 puntos de control de calidad.</p></div></div>
-                                <div class="flex items-start"><span class="bg-yellow-400 text-black font-bold rounded-full h-8 w-8 flex items-center justify-center mr-4 mt-1">3</span><div><h3 class="font-bold text-xl">Transparencia Radical</h3><p class="text-gray-400">Ofrecemos un dashboard de seguimiento en tiempo real para el cliente.</p></div></div>
-                            </div>
-                        </div>
-                        <div class="hidden md:block">
-                            <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Interior de casa moderna y de calidad" class="rounded-lg shadow-2xl">
-                        </div>
-                    </div>`
-                },
-                // SLIDE 4: NUESTRO LIDERAZGO
-                {
-                    title: "Nuestro Liderazgo",
-                    content: `<div class="grid md:grid-cols-2 gap-16 items-center">
-                        <div class="hidden md:block">
-                            <img src="https://images.pexels.com/photos/834892/pexels-photo-834892.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Maestro constructor supervisando una obra" class="rounded-lg shadow-2xl">
-                        </div>
-                        <div>
-                            <h2 class="text-4xl md:text-5xl font-black">La Garantía Maestra: <span class="text-yellow-400">Un Fundador Constructor</span></h2>
-                            <p class="mt-4 text-lg text-gray-400">Nuestra mayor ventaja competitiva no es una herramienta, es el conocimiento. Soy un maestro que domina integralmente cada área crítica: gasfitería, electricidad, techumbre, cerámica y terminaciones finas.</p>
-                            <p class="mt-4 text-lg text-gray-400">Esta experiencia garantiza una calidad que nadie puede igualar y la capacidad de solucionar problemas en terreno de forma inmediata, evitando los retrasos y sobrecostos que destruyen otros proyectos.</p>
-                        </div>
-                    </div>`
-                },
-                // SLIDE 5: MODELO DE NEGOCIO
-                {
-                    title: "Modelo de Negocio",
-                    content: `<div class="grid md:grid-cols-2 gap-8 w-full max-w-5xl items-center">
-                        <div>
-                            <h2 class="text-4xl font-bold text-yellow-400 mb-4">Crecimiento Sin Riesgo</h2>
-                            <p class="text-gray-300 text-lg">Nuestra estructura de cobro es la piedra angular de nuestra estabilidad. El <strong class="text-white">anticipo del 55%</strong> autofinancia el 100% de los costos directos de la obra.</p>
-                            <p class="mt-4 text-gray-300">Esto significa que la inversión inicial se destina exclusivamente a adquirir activos. No arriesgamos el capital en la operación diaria, eliminando el principal riesgo de quiebra de las constructoras pequeñas.</p>
-                        </div>
-                        <div class="bg-gray-900/50 border border-gray-700 p-8 rounded-lg text-center">
-                            <p class="text-gray-400">Fase 1: Inicio</p>
-                            <p class="text-7xl font-black text-yellow-400 my-2">55%</p>
-                            <p class="text-gray-400">Fases 2-4: Avance y Entrega</p>
-                            <p class="text-5xl font-bold text-white mt-2">45%</p>
-                        </div>
-                    </div>`
-                },
-                // SLIDE 6: ESTRATEGIA DE MARKETING
-                {
-                    title: "Estrategia de Marketing",
-                    content: `<div class="text-center">
-                        <h2 class="text-4xl md:text-5xl font-black">Estrategia de Marca: <span class="text-yellow-400">Convertirnos en Influencia</span></h2>
-                        <p class="mt-4 text-lg text-gray-400 max-w-4xl mx-auto">No solo construiremos casas, construiremos una marca líder. La inversión en tecnología (drone, cámaras) no es para nosotros, es para nuestros clientes y para el mercado.</p>
-                        <div class="mt-8 grid md:grid-cols-3 gap-8">
-                             <div class="bg-gray-900/50 p-6 rounded-lg border border-gray-700"><h3 class="font-bold text-xl text-yellow-400">Posicionamiento SEO</h3><p class="mt-2 text-gray-400 text-sm">Dominar búsquedas locales para "construcción de calidad" con las palabras clave "Casas" y "Fabrick".</p></div>
-                             <div class="bg-gray-900/50 p-6 rounded-lg border border-gray-700"><h3 class="font-bold text-xl text-yellow-400">Marketing de Confianza</h3><p class="mt-2 text-gray-400 text-sm">Crearemos contenido de alto valor (videos, tutoriales) que demuestren nuestra maestría y eduquen al mercado.</p></div>
-                             <div class="bg-gray-900/50 p-6 rounded-lg border border-gray-700"><h3 class="font-bold text-xl text-yellow-400">Expansión Regional</h3><p class="mt-2 text-gray-400 text-sm">Esta estrategia nos posicionará como referentes, permitiendo una expansión natural a otras regiones en el mediano plazo.</p></div>
-                        </div>
-                    </div>`
-                },
-                // SLIDE 7: LA INVERSIÓN
-                {
-                    title: "La Inversión",
-                    content: `<div class="text-center">
-                        <h2 class="text-4xl md:text-5xl font-black mb-12">La Inversión Estratégica: <span class="text-yellow-400">$64.5 Millones</span></h2>
-                        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-                            <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-2xl shadow-lg"><h3 class="text-lg font-bold text-white">Flota y Movilidad</h3><p class="text-3xl font-bold text-yellow-400 mt-2">$16.5M</p></div>
-                            <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-2xl shadow-lg"><h3 class="text-lg font-bold text-white">Equipamiento</h3><p class="text-3xl font-bold text-yellow-400 mt-2">$14.6M</p></div>
-                            <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-2xl shadow-lg"><h3 class="text-lg font-bold text-white">Tecnología y Marca</h3><p class="text-3xl font-bold text-yellow-400 mt-2">$7.8M</p></div>
-                            <div class="bg-gray-900/50 border border-gray-700 p-6 rounded-2xl shadow-lg"><h3 class="text-lg font-bold text-white">Infraestructura</h3><p class="text-3xl font-bold text-yellow-400 mt-2">$4.6M</p></div>
-                            <div class="bg-yellow-400 text-gray-900 border-yellow-400 border-2 p-6 rounded-2xl shadow-lg"><h3 class="text-lg font-bold">Capital de Trabajo</h3><p class="text-3xl font-bold mt-2">$21M</p></div>
-                        </div>
-                        <p class="mt-10 text-xl font-semibold text-gray-400">Una inversión en activos y solidez financiera para garantizar un crecimiento acelerado y sin contratiempos.</p>
-                    </div>`
-                },
-                // SLIDE 8: PROYECCIÓN FINANCIERA
-                {
-                    title: "Proyección Financiera",
-                    content: `<div class="grid md:grid-cols-2 gap-12 items-center">
-                        <div class="text-center md:text-left">
-                            <h2 class="text-4xl md:text-5xl font-black">Proyección y Retorno Acelerado</h2>
-                            <p class="mt-4 text-lg text-gray-400">Nuestro modelo es financieramente sólido. La utilidad neta proyectada es una base conservadora que crecerá exponencialmente a medida que la marca se posicione y tomemos proyectos de mayor envergadura.</p>
-                             <p class="mt-4 text-lg text-gray-400"><strong class="text-yellow-400">Potencial de Aceleración:</strong> Al completar un solo proyecto de 200m² en lugar de dos de 100m², los tiempos se optimizan y la utilidad aumenta, <strong class="text-white">reduciendo drásticamente el tiempo de recuperación de la inversión.</strong></p>
-                        </div>
-                        <div class="space-y-8">
-                            <div class="p-6 rounded-xl bg-gray-900/50 border border-gray-700">
-                                <h3 class="text-xl font-bold text-white">Utilidad Neta Anual</h3>
-                                <p class="text-5xl font-black my-2 text-green-500">~$10.7 Millones</p>
-                                <p class="text-gray-400 text-sm">(Proyección con 4 proyectos de 100m² al año)</p>
-                            </div>
-                            <div class="p-6 rounded-xl bg-yellow-400/10 border-yellow-400 border">
-                                <h3 class="text-xl font-bold text-white">Recuperación de la Inversión</h3>
-                                <p class="text-5xl font-black my-2 text-yellow-400">4.5 - 6.5 Años</p>
-                                <p class="text-gray-400 text-sm">(Payback de activos, con alto potencial de aceleración)</p>
-                            </div>
-                        </div>
-                    </div>`
-                },
-                // SLIDE 9: LA PROPUESTA
-                {
-                    title: "La Propuesta",
-                    content: `<div class="text-center max-w-4xl">
-                        <h2 class="text-4xl md:text-5xl font-black mb-6">La Propuesta: Una Sociedad en el Éxito</h2>
-                        <p class="text-xl text-gray-300 mb-8">Ofrecemos una participación del <strong class="text-white">5% sobre la utilidad bruta (16%)</strong> de cada proyecto, con un fondo de recuperación del 6% para el retorno de su capital inicial.</p>
-                        <div class="bg-yellow-400 text-gray-900 p-8 rounded-2xl shadow-2xl">
-                            <h3 class="text-3xl font-black">Una Inversión en Activos, no en Riesgo.</h3>
-                            <p class="mt-4 font-medium text-lg">Gracias a nuestro modelo de flujo de caja positivo, su inversión se destina a construir una base de activos sólida, mientras que cada proyecto se autofinancia. Es una oportunidad para ser socio de una empresa diseñada para liderar el mercado con un riesgo operativo mínimo.</p>
-                            <button class="mt-8 bg-gray-900 text-white font-bold py-3 px-8 rounded-full transition-transform hover:scale-105">Hablemos de los Siguientes Pasos</button>
-                        </div>
-                    </div>`
-                }
-            ];
-
-            const desktopContainer = document.getElementById('section-container-desktop');
-            const mobileContainer = document.getElementById('mobile-view');
-            const navDotsContainer = document.getElementById('nav-dots');
-            let currentSection = 0;
-            let isAnimating = false;
+        <!-- 2. "Gráfica" de Espacios (NUEVA SECCIÓN CON ANIMACIÓN) -->
+        <section>
+            <h2 class="text-2xl font-bold text-blue-700 mb-6">Tu Proyecto: Espacio por Espacio</h2>
             
-            function createSectionHTML(slide) {
-                return `
-                    <section class="section">
-                        <div class="background-pattern"></div>
-                        <div class="content-wrapper fade-in-up">
-                            ${slide.content}
+            <div class="space-y-6">
+
+                <!-- Ítem 1: Habitación Principal (CON ANIMACIÓN) -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <!-- Detalle y Precio -->
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-800">Habitación Principal (28 m²)</h3>
+                            <p class="text-sm text-gray-600">Equipo: <span class="font-medium">Samsung Inverter 18.000 BTU</span></p>
                         </div>
-                    </section>
-                `;
-            }
+                        <span class="text-xl font-bold text-gray-900 mt-2 sm:mt-0">$ 407.990</span>
+                    </div>
+                    <!-- Visualización de Aire -->
+                    <div class="w-full h-32 bg-gray-200 rounded-lg relative overflow-hidden p-2">
+                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-4 bg-gray-700 rounded-sm z-10" title="Unidad de Aire Acondicionado"></div>
+                        <!-- Ondas de Aire Animadas -->
+                        <div class="relative w-full h-full">
+                            <div class="air-wave" style="animation-delay: 0s;"></div>
+                            <div class="air-wave" style="animation-delay: 1s;"></div>
+                            <div class="air-wave" style="animation-delay: 2s;"></div>
+                        </div>
+                    </div>
+                </div>
 
-            function renderPresentation() {
-                let desktopHTML = '';
-                let mobileHTML = '';
-                navDotsContainer.innerHTML = '';
+                <!-- Ítem 2: Sala + Pasillo (CON ANIMACIÓN) -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-800">Sala + Pasillo (26.4 m²)</h3>
+                            <p class="text-sm text-gray-600">Equipo: <span class="font-medium">TCL Inverter 24.000 BTU</span></p>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900 mt-2 sm:mt-0">$ 670.000</span>
+                    </div>
+                    <div class="w-full h-32 bg-gray-200 rounded-lg relative overflow-hidden p-2">
+                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-4 bg-gray-700 rounded-sm z-10" title="Unidad de Aire Acondicionado"></div>
+                        <div class="relative w-full h-full">
+                            <div class="air-wave" style="animation-delay: 0.5s;"></div>
+                            <div class="air-wave" style="animation-delay: 1.5s;"></div>
+                            <div class="air-wave" style="animation-delay: 2.5s;"></div>
+                        </div>
+                    </div>
+                </div>
 
-                slidesData.forEach((slide, index) => {
-                    const sectionHTML = createSectionHTML(slide);
-                    desktopHTML += sectionHTML;
-                    mobileHTML += sectionHTML;
+                <!-- Ítem 3: Habitación Chica (CON ANIMACIÓN) -->
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
+                        <div>
+                            <h3 class="font-semibold text-lg text-gray-800">Habitación Chica (12 m²)</h3>
+                            <p class="text-sm text-gray-600">Equipo: <span class="font-medium">Samsung Inverter 9.000 BTU</span></p>
+                        </div>
+                        <span class="text-xl font-bold text-gray-900 mt-2 sm:mt-0">$ 390.000</span>
+                    </div>
+                    <div class="w-full h-32 bg-gray-200 rounded-lg relative overflow-hidden p-2">
+                        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-20 h-4 bg-gray-700 rounded-sm z-10" title="Unidad de Aire Acondicionado"></div>
+                        <div class="relative w-full h-full">
+                            <div class="air-wave" style="animation-delay: 0.2s;"></div>
+                            <div class="air-wave" style="animation-delay: 1.2s;"></div>
+                            <div class="air-wave" style="animation-delay: 2.2s;"></div>
+                        </div>
+                    </div>
+                </div>
 
-                    const dotContainer = document.createElement('div');
-                    dotContainer.classList.add('dot-container');
-                    const dot = document.createElement('button');
-                    dot.classList.add('dot');
-                    dot.setAttribute('aria-label', `Ir a la sección ${slide.title}`);
-                    dot.addEventListener('click', ()
+                <!-- Ítem 4: Instalación -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-800">Instalación y Materiales</h3>
+                        <p class="text-sm text-gray-600">Mano de obra para 3 equipos, soportes y kit completo.</p>
+                    </div>
+                    <div class="mt-2 sm:mt-0">
+                        <span class="text-xl font-bold text-gray-900">$ 400.000</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="my-8 border-gray-200">
+
+        <!-- 3. Resumen Final (Sencillo) -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Resumen Final</h2>
+            
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                <!-- Cálculo Subtotal Equipos -->
+                <div class->
+                    <div class="flex justify-between items-center text-gray-700 mb-3">
+                        <span class="text-base">Total Equipos (3 unidades)</span>
+                        <span class="font-medium text-base">$ 1.467.990</span>
+                    </div>
+                    <div class="flex justify-between items-center text-gray-700 mb-4">
+                        <span class="text-base">Instalación y Materiales</span>
+                        <span class="font-medium text-base">$ 400.000</span>
+                    </div>
+                </div>
+                
+                <!-- Separador -->
+                <div class="border-t border-blue-200 pt-4 mt-4">
+                    <div class="flex justify-between items-center text-gray-900">
+                        <span class="text-xl font-bold">TOTAL (Equipos + Instalación)</span>
+                        <span class="text-3xl font-extrabold text-blue-700">$ 1.867.990</span>
+                    </div>
+                </div>
+                 <p class="text-xs text-gray-600 mt-4 text-right">Presupuesto válido por 15 días.</p>
+            </div>
+        </section>
+
+        <!-- 4. Mi Compromiso (Tono Personal) -->
+        <section class="mt-10">
+            <h3 class="text-xl font-semibold text-gray-800">Mi Compromiso Contigo</h3>
+            <p class="text-gray-600 mt-3">Nancy, más allá de los números, mi compromiso es hacer un trabajo de calidad, como si fuera para mi propia casa. Esto incluye:</p>
+            <ul class="list-disc list-inside space-y-2 text-gray-700 mt-4 pl-2">
+                <li><strong>Garantía de 1 año</strong> en toda la instalación.</li>
+                <li>Trabajo <strong>limpio, ordenado</strong> y en los tiempos que acordemos.</li>
+                <li>Uso de <strong>materiales de calidad</strong> (soportes, cañerías, etc.) para que dure años.</li>
+                <li>La tranquilidad de que todo quedará funcionando al 100%.</li>
+            </ul>
+        </section>
+
+        <!-- 5. Cierre y Botón de WhatsApp (SIN NOMBRE MAURO) -->
+        <footer class="text-center mt-12 pt-8 border-t border-gray-200">
+            <h2 class="text-3xl font-bold text-gray-900">¿Coordinamos?</h2>
+            <p class="text-lg text-gray-600 mt-4 mb-8 max-w-md mx-auto">
+                Si te parece bien o tienes cualquier duda, ¡avísame por WhatsApp! Cero compromiso, la idea es ayudarte.
+            </p>
+            
+            <!-- Botón de WhatsApp -->
+            <a href="https://wa.me/56930121625" target="_blank" class="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 active:bg-green-700 text-white font-bold py-4 px-10 rounded-full shadow-lg transition-all transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
+                <!-- Icono de WhatsApp -->
+                <svg class="w-6 h-6 mr-3" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.8 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+                Conversar por WhatsApp
+            </a>
+
+            <p class="text-gray-500 text-sm mt-8">
+                ¡Espero tu mensaje! <br>
+                Saludos, <br>
+                <span class="font-medium text-gray-600">@f.eduardoms</span>
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
